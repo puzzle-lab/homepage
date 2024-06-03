@@ -1,0 +1,13 @@
+@app.route('/login', methods=["POST"])
+def login():
+    user_id = request.form.get("user_id")
+    password = request.form.get("password")
+    # Check from Mysql
+    cursor.execute("SELECT user_id, password FROM user WHERE user_id='%s' AND password='%s';", (user_id, password))
+    result = cursor.fetchone()
+    if user_id == result[user_id]:
+        print(result)
+        if result:
+            return render_template('next_page.html')
+        else:
+            return render_template('error.html')

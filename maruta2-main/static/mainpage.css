@@ -1,0 +1,322 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  height: 2350px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5% 5px 5%;
+}
+
+.main-image {
+  width: 120px;
+}
+.main-image img {
+  width: 100%;
+}
+
+#f1 {
+  position: absolute;
+  border: none;
+  right: 100px;
+  top: 40px;
+  z-index: 100;
+  transition: all 0.3s ease-out;
+  transform: scale(1);
+}
+#f2 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 99;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+#f3 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 98;
+  transition: all 0.7s ease-out;
+  transform: scale(1);
+}
+#f4 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 97;
+  transition: all 0.9s ease-out;
+  transform: scale(1);
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  top: 130px;
+  width: 77%;
+  justify-content: space-between;
+  padding: 6px 28px;
+  margin: 0 10%;
+  z-index: 96;
+  background-color: #fff;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(1px); /* 배경을 10px로 흐리게 만듦 */
+}
+
+nav > a {
+  border-bottom: 2px solid #fff;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.9s ease-in-out;
+}
+
+nav > a:hover {
+  border-bottom: 2px solid rgb(139, 23, 26);
+  text-shadow: 0 0 2px rgb(148, 147, 147);
+}
+
+.navOnscroll {
+  border-radius: 0px;
+  border-color: black;
+  border: 0 solid #fff;
+}
+
+.text {
+  margin: 90px 0 0 0;
+  padding: 15px 0;
+  background-color: #ededed;
+  text-align: center;
+}
+
+.text h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.container {
+  margin: 30px 10%;
+  width: 80%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.boxArea div a {
+  position: relative;
+  bottom: -5px;
+}
+
+.boxArea {
+  display: flex;
+  position: relative;
+  left: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+.boxArea div {
+  margin: 15px 0px 0px 10px;
+  border-radius: 20px;
+  transition: all 0.7s ease-in;
+}
+
+.boxArea div:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 7px rgb(94, 94, 94);
+}
+
+.bottomBarArea {
+  display: flex;
+  justify-content: center;
+}
+
+.bottomBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottomBar div {
+  height: 5px;
+  margin: 0px 3px;
+  padding: 0px 15px;
+  background-color: rgb(177, 177, 177);
+  transition: all 0.7s ease;
+}
+
+.container button {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  transition: all 0.9 ease-in-out;
+}
+
+.btn-area {
+  position: relative;
+  top: -300px;
+  display: flex;
+  justify-content: space-between;
+  height: 75px;
+}
+
+.btn-area button {
+  border: none;
+  width: 75px;
+  border-radius: 50%;
+}
+
+.btn-area img {
+  border-style: 1px solid black;
+  width: 100%;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.best {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0 0 0;
+  padding: 80px 9% 160px 9%;
+  background-color: #ededed;
+}
+
+.best ul,
+.new ul {
+  position: absolute;
+  left: 430px;
+}
+.best ul li,
+.new ul li {
+  font-size: 20px;
+}
+
+.new {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 9% 160px 9%;
+  margin-bottom: 80px;
+}
+
+.best a,
+.new a {
+  text-decoration: none;
+  font-size: 18px;
+}
+/* -------------------------------------------------------------- */
+/* .bestArea{
+  display: flex;
+  justify-content: space-between;
+  height: 420px;
+  padding: 30px 0;
+  margin: 0 23%;
+}
+
+.best{
+  width: 100%;
+  margin: 0 0.8% 0 0;
+  border-radius: 15px;
+  transition: all 0.7s ease-in-out;
+}
+.new{
+  width:100%;
+  margin: 0 0 0 0.8%;
+  border-radius: 15px;
+  transition: all 0.7s ease-in-out;
+}
+
+.best:hover, .new:hover{
+  box-shadow: 0 0 15px rgb(119, 119, 119);
+}
+
+.best h1, .new h1{
+  font-size: 30px;
+  margin: 13px;
+  text-align: center;
+}
+
+.best ul li, .new ul li{
+  margin: 12px 20px;
+}
+
+.best ul li a, .new ul li a {
+  font-size: 17px;
+  text-decoration: none;
+  color:black;
+} */
+/* -------------------------------------------------------------- */
+.footer {
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+  padding: 35px 0;
+  background-color: #ededed;
+}
+
+.allf {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+}
+
+.allf div {
+  margin: 0 50px;
+}
+.allf div h1 {
+  font-size: 40px;
+  margin: 8px 0;
+}
+
+.allf div h2 {
+  font-size: 22px;
+}
+
+.allf div div {
+  margin: 40px 0 0 530px;
+}
+.allf div div a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  transition: all 0.5s ease;
+}
+
+.allf div div a:hover {
+  text-shadow: 0 0 3px rgba(121, 121, 121, 0.664);
+}
+
+.allf div:last-child {
+  margin-top: 43px;
+}
+
+/* 여기서부터 하단 복북 */
+.last {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0 40px 0;
+  width: 100%;
+  background-color: rgb(43, 42, 42);
+  color: #fff;
+}
+
+.lastArea {
+  margin: 0 20%;
+}
+
+.a1,
+.a2 {
+  display: flex;
+  justify-content: center;
+}
+
+.a1 h3,
+.a2 h4 {
+  margin: 20px 5px 15px 5px;
+}
+.a2 h4 {
+  margin-bottom: 30px;
+}

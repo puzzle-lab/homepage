@@ -1,0 +1,100 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5% 5px 5%;
+}
+
+.main-image {
+  width: 120px;
+}
+.main-image img {
+  width: 100%;
+}
+
+#f1 {
+  position: absolute;
+  border: none;
+  right: 100px;
+  top: 40px;
+  z-index: 100;
+  transition: all 0.3s ease-out;
+  transform: scale(1);
+}
+#f2 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 99;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+#f3 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 98;
+  transition: all 0.7s ease-out;
+  transform: scale(1);
+}
+#f4 {
+  position: absolute;
+  top: 44px;
+  right: 107px;
+  z-index: 97;
+  transition: all 0.9s ease-out;
+  transform: scale(1);
+  display: hidden;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  top: 130px;
+  width: 77%;
+  justify-content: space-between;
+  padding: 6px 28px;
+  margin: 0 10%;
+  z-index: 96;
+  background-color: #fff;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(1px); /* 배경을 10px로 흐리게 만듦 */
+}
+
+nav > a {
+  border-bottom: 2px solid #fff;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.9s ease-in-out;
+}
+
+nav > a:hover {
+  border-bottom: 2px solid rgb(139, 23, 26);
+  text-shadow: 0 0 2px rgb(148, 147, 147);
+}
+
+.navOnscroll {
+  border-radius: 0px;
+  border-color: black;
+  border: 0 solid #fff;
+}
+
+.text {
+  margin: 90px 0 0 0;
+  padding: 15px 0;
+  background-color: rgb(222, 222, 222);
+  text-align: center;
+}
+
+.text h2 {
+  font-size: 18px;
+  font-weight: normal;
+}

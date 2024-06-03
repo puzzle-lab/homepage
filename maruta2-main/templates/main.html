@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/mainpage.css" />
+  </head>
+  <body>
+    <div class="top">
+      <div class="main-image">
+        <a href="/main">
+          <img src="../static/대표 로고.png" alt="" />
+        </a>
+      </div>
+      <div class="menu">
+        <div id="f1">
+          <a href=""
+            ><img src="../static/설정 바.png" alt="3line" width="50px"
+          /></a>
+        </div>
+        <div id="f2">
+          <!-- 개인정보  -->
+          <a href=""
+            ><img src="../static/개인설정.png" alt="개인정보" width="40px"
+          /></a>
+        </div>
+        <div id="f3">
+          <!-- 글쓰기 -->
+          <a href=""><img src="../static/문의.png" alt="" width="40px" /></a>
+        </div>
+        <div id="f4">
+          <!-- 로그아웃e -->
+          <a href=""
+            ><img src="../static/로그아웃.png" alt="로그아웃" width="40px"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <nav>
+        <a href="/main">홈 화면</a>
+        <a href="/lists/game/1">게임 게시판</a>
+        <a href="/lists/music/1">음악 게시판</a>
+        <a href="/lists/japan/1">일본 게시판</a>
+        <a href="/lists/computer/1">학업 게시판</a>
+        <a href="/lists/talk/1">잡담 게시판</a>
+      </nav>
+    </div>
+    <div class="text">
+      <h2 id="name"></h2>
+    </div>
+    <!-- 아래부터 슬라이드 영역 -->
+    <div class="container">
+      <div class="sd">
+        <div class="boxArea">
+          <div>
+            <a href="/lists/game/1"
+              ><img
+                src="../static/게임 게시판 카드.png"
+                width="350px"
+                height="550px"
+            /></a>
+          </div>
+          <div>
+            <a href="/lists/music/1"
+              ><img
+                src="../static/음악 게시판 ㅏ드.png"
+                alt="b"
+                width="350px"
+                height="550px"
+            /></a>
+          </div>
+          <div>
+            <a href="lists/japan/1"
+              ><img
+                src="../static/일본 게시판 카드.png"
+                alt="c"
+                width="350px"
+                height="550px"
+            /></a>
+          </div>
+          <div>
+            <a href="/lists/computer/1"
+              ><img
+                src="../static/컴퓨터 게시판 카드.png"
+                alt="d"
+                width="350px"
+                height="550px"
+            /></a>
+          </div>
+          <div>
+            <a href="/lists/talk/1"
+              ><img
+                src="../static/잡담 게시판 카드.png"
+                alt="d"
+                width="350px"
+                height="550px"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="btn-area">
+        <button class="left">
+          <img src="../static/왼쪽.png" alt="" />
+        </button>
+        <button class="right">
+          <img src="../static/오른쪽.png" alt="" />
+        </button>
+      </div>
+      <div class="bottomBarArea">
+        <div class="bottomBar">
+          <div id="bar1"></div>
+          <div id="bar2"></div>
+          <div id="bar3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 아래부터 베스트 글 + 최신글 -->
+    <div class="bestArea">
+      <div class="best">
+        <h3>베스트 추천 글</h3>
+        <ul>
+          {% for result_rec in result_recs %}
+          <li>
+            <a
+              href="/{{ result_rec['table'] }}/{{ result_rec['title'] }}/{{result_rec['id']}}"
+            >
+              {{result_rec['title']}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="#" style="font-size: 18px; color: #0066cc">더 보기 &gt;</a>
+      </div>
+      <div class="new">
+        <h3>가장 최신 글</h3>
+        <ul>
+          {% for result_date in result_dates %}
+          <li>
+            <a
+              href="/{{ result_date['table'] }}/{{ result_date['title'] }}/{{result_date['id']}}"
+              >{{result_date['title']}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="#" style="font-size: 18px; color: #0066cc">더 보기 &gt;</a>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="allf">
+        <div>
+          <img src="../static/대표 로고.png" alt="" width="350px" />
+        </div>
+        <!-- 전체 페이지 정보와 만든 사람 -->
+        <div>
+          <h1>게시판을 더 알고 싶다면.</h1>
+          <h2>
+            학교에서 친구들과 함께 소통하기 위해 게시판애 대해 알아봅시다!
+          </h2>
+          <h2>수업이 재미없고 헛짓거리 하고 싶을 때 이용하면 좋아요.</h2>
+          <div>
+            <a href="" style="font-size: 20px; color: #0066cc"
+              >더 알아보기 &gt;</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 여기서부터 하단 복붙 ㄱㄱ -->
+    <div class="last">
+      <div class="lastArea">
+        <hr />
+        <div class="a1">
+          <h3 style="margin-right: 10px">제작</h3>
+          <h3>박설호</h3>
+          <h3>배태하</h3>
+          <h3>서용민</h3>
+          <h3>이재훈</h3>
+          <h3>이지문</h3>
+          <h3>황제원</h3>
+        </div>
+        <div class="a2">
+          <h4>design.Hwang-jewon</h4>
+        </div>
+
+        <div style="display: flex; justify-content: center">
+          <i>Copyright ⓒ 2024. none All rights reserved.</i>
+        </div>
+      </div>
+    </div>
+    <script src="../static/mainpage.js"></script>
+  </body>
+</html>
