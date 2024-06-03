@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
+body{
+  font-family: "Noto Sans KR", sans-serif ;
+}
 
 .top {
   display: flex;
@@ -130,33 +135,33 @@ nav > a:hover {
   }
 
 .container{
-  margin: 30px 23%;
+  margin: 35px 23%;
 }
 
 .title{
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .title input{
   font-weight: bold;
   font-family: sans-serif;
-  width: 55%;
+  width: 70%;
   height: 20px;
   padding: 10px 20px;
   font-size: 20px;
-  margin: 10px 0 30px 0 ;
+  margin: 10px 0 0 0 ;
   outline: none;
   border:none;
   border-bottom: 2px solid rgb(75, 75, 75);
 }
 
-.container div h1{
+.container div a{
   display: flex;
   justify-content: left;
   font-size: 24px;
-  font-family: 'Nanum Gothic', sans-serif;
-  color:#29367c;
+  text-decoration: none;
+  color:#e37676;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -210,29 +215,32 @@ nav > a:hover {
   font-size: 17px;
   border: none;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 22px;
   padding: 10px 20px;
   transition: all 0.6s ease-in-out;
 }
 
 .password{
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  margin-bottom: 20px;
 }
 .password input{
   display: flex;
   justify-content: center;
-  width: 130px;
+  width: 15%;
+  min-width: 130px;
   font-size: 16px;
-  padding: 5px 5px;
+  padding: 8px 10px;
   background-color: #ededed;
-  margin: 20px 10px 35px 10px;
-  border:none;
+  margin: 5px 10px 5px 10px;
+  border:2px solid rgb(143, 142, 142);
+  border-radius: 10px;
   outline: none;
 }
 
 .createTextBtn input:first-child{
-  background-color: #0866ff;;
+  background-color: #e37676;
 }
 
 .createTextBtn input:last-child{
@@ -242,4 +250,13 @@ nav > a:hover {
 
 .createTextBtn input:hover{
   box-shadow: 0 1px 5px rgb(110, 110, 110);
+}
+
+label{
+  padding: 5px 10px;
+  border: none;
+  background-color: #e37676;
+  border-radius: 22px;
+  color:#fff;
+  font-size: 17px;
 }

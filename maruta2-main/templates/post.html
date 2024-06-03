@@ -21,21 +21,15 @@
           /></a>
         </div>
         <div id="f2">
-          <!-- 개인정보  -->
+          <!-- 로그아웃e -->
           <a href=""
-            ><img src="../static/개인설정.png" alt="개인정보" width="40px"
+            ><img src="../static/문의.png" alt="" width="40px"
           /></a>
         </div>
         <div id="f3">
-          <!-- 로그아웃e -->
-          <a href=""
-            ><img src="../static/로그아웃.png" alt="" width="40px"
-          /></a>
-        </div>
-        <div id="f4">
           <!-- 제거 할 부분 -->
           <a href=""
-            ><img src="../static/문의.png" alt="로그아웃" width="40px"
+            ><img src="../static/로그아웃.png" alt="로그아웃" width="40px"
           /></a>
         </div>
       </div>
@@ -80,16 +74,27 @@
       <h1>{{ result['title'] }}</h1>
 
       <!-- 추천 수  max 50-->
-      <div class="textInf">
-        <p>추천 : {{ result['recommand'] }}</p>
-        <!-- 시간 -->
-        {% set date_string = result['date'].strftime("%Y-%m-%d %H:%M:%S") %}
-          {% set datetimes = date_string.split(" ") %}
-          {% set date_parts = datetimes[0].split("-") %}
-          {% set time_parts = datetimes[1].split(":") %}
-        <p>{{ date_parts[0] }} {{date_parts[1]}} {{ date_parts[2] }} {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
+      <div class="textInf"> 
+        <div style="display: flex;justify-content: left;height: 20px; align-items: center;">
+          <p style="font-size: 17px;color:#5c5c5c;">
+            {{ result['nickname'] }} 
+          </p>
+          <span style="border-right: 2px solid #5c5c5c;height: 15px;margin: 0 5px;"></span>
+          <!-- 시간 -->
+          {% set date_string = result['date'].strftime("%Y-%m-%d %H:%M:%S") %}
+            {% set datetimes = date_string.split(" ") %}
+            {% set date_parts = datetimes[0].split(".") %}
+            {% set time_parts = datetimes[1].split(":") %}
+          <p style="font-weight: bold;">{{ date_parts[0] }} {{date_parts[1]}} {{ date_parts[2] }}&nbsp; {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
+        </div>
+        <div style="display: flex;justify-content: right;">
+          <p style="font-size: 17px;color:#5c5c5c">추천 : {{ result['recommand'] }}</p>
+        </div>
       </div>
-      <div class="contentarea">
+      <div class="contentarea" style="min-height: 400px;">
+        <div class="j">
+          <button class="jb">글삭제</button>
+        </div>
         <!--이미지 -->
         <!-- 이미지 공간 할당(권위자의 조언) -->
         <img src="{{ result['image'] }}" alt="Post image" />
@@ -123,8 +128,8 @@
         </form>
       </div>
       <!--자바 스크립트로 글자 넣기 (h2 본문 텍스트 자바스크립트로 댓글 숫자 받고 innerText)-->
-      <h3 style="margin: 15px 0px;padding: 0 0 15px 0;
-      border-bottom: 2px solid #3b4890">전체 댓글 {{ result_count['cnt'] }} 개</h3>
+      <h4 style="margin: 10px 0px;padding: 0 0 10px 0;
+      border-bottom: 3px solid #e37676">전체 댓글 {{ result_count['cnt'] }} 개</h4>
       <!-- 댓글 입력 창 -->
       <form
         action="/{{ table }}/{{ title }}/{{id}}/comment"
@@ -139,7 +144,7 @@
             name="nickname"
             value=""
             placeholder="사용할 닉네임"
-            minlength="2"
+            minlength="3"
           />
           <!-- password max english 30, hanguel 15 -->
           <input
@@ -148,7 +153,7 @@
             name="password"
             value=""
             placeholder="댓글 비밀번호"
-            minlength="2"
+            minlength="3"
           />
         </div>
         <div class="b">
@@ -174,25 +179,23 @@
           {% set date_parts = datetimes[0].split("-") %}
           {% set time_parts = datetimes[1].split(":") %}
           <div class="name-date">
-            <p style="font-weight: bold;">{{ comment['nickname'] }}</p>
-            <p style="color: rgb(129, 129, 129)">{{ date_parts[0] }} {{date_parts[1]}} {{ date_parts[2] }} {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
-          </div>
-          <!-- 댓글내용 -->
-          <div class="tt">
             <div class="bottom-review">
+              <p style="font-weight: bold;min-width: 60px;">{{ comment['nickname'] }}</p>
               <p>{{comment['article'] }}</p>
             </div>
+            <div>
+              <p style="color: rgb(129, 129, 129);min-width: 130px;text-align: right;">{{date_parts[1]}} {{ date_parts[2] }} {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
+            </div>
           </div>
-          
-          <div class="delete-form" style="padding: 15px 0;">
-            
+          <!-- 댓글내용 -->
+          <div class="delete-form" style="padding: 5px 0;">
             <!-- 댓글 삭제기능 -->
             <form
               class="test"
               action="/{{ table }}/{{ title }}/{{ id }}/{{ comment['comment_id']}}/check"
               method="post"
             >
-              <input class="inputv" style="padding: 2px 5px; width: 90px;background-color: rgb(179, 179, 179);border:none;" type="password" name="password2" value=""/>
+              <input class="inputv" style="padding: 2px 5px; width: 90px;background-color: rgb(179, 179, 179);border:none;outline: none;" type="password" name="password2" value=""/>
               <input type="submit" class="inputvB"
               style="border:none;background-color: #a0a0a0; padding: 1px 10px;color:white;border-radius: 3px;"
                value="확인" />
@@ -201,6 +204,7 @@
               action="/{{ table }}/{{ title }}/{{ id }}/comment/delete/{{ comment['comment_id'] }}"
               method="post"
               class="deleteBtn"
+              style="display: none;"
             >
               <input style="border: none;font-size: 17px; margin-left: 5px;" type="submit" value="X" disabled />
             </form>
@@ -233,6 +237,5 @@
     </div>      
     <script src="../static/post.js"></script>
     <script src="../static/post-2.js"></script>
-    
   </body>
 </html>

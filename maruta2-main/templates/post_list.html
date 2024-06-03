@@ -21,21 +21,15 @@
           /></a>
         </div>
         <div id="f2">
-          <!-- 개인정보  -->
+          <!-- 로그아웃e -->
           <a href=""
-            ><img src="../static/개인설정.png" alt="개인정보" width="40px"
+            ><img src="../static/문의.png" alt="" width="40px"
           /></a>
         </div>
         <div id="f3">
-          <!-- 로그아웃e -->
-          <a href=""
-            ><img src="../static/로그아웃.png" alt="" width="40px"
-          /></a>
-        </div>
-        <div id="f4">
           <!-- 제거 할 부분 -->
           <a href=""
-            ><img src="../static/문의.png" alt="로그아웃" width="40px"
+            ><img src="../static/로그아웃.png" alt="로그아웃" width="40px"
           /></a>
         </div>
       </div>
@@ -80,13 +74,19 @@
       {% for result in results %}
       <div class="text-area">
         <!-- 글 리스트 (10개) -->
-        <a href="/{{ table }}/{{ result['title']}}/{{result['id']}}"
-          >{{result['title']}}</a
-        >
-        <p>{{ result['date']}}</p>
-        <p>{{ result['recommand']}}</p>
-        <p>{{ result['nickname'] }}</p>
-        <p>{{ result['cnt'] }}</p>
+        <div style="display: flex;
+        height: 100%;
+        align-items: center;">
+          <a href="/{{ table }}/{{ result['title']}}/{{result['id']}}">{{result['title']}}</a>
+          <div style="display: flex; height: 100%;align-content: center;">
+            <p style="font-size: 11px;color:rgb(90, 90, 90)">{{ result['date']}}</p>
+          </div>
+        </div>
+        <div style="color:rgb(90, 90, 90)" class="kkkk">
+          <p>{{ result['nickname'] }}</p>
+          <p>댓글 {{ result['cnt'] }}</p>
+          <p>추천 {{ result['recommand']}}</p>
+        </div>
       </div>
       {% endfor %}
       <div class="lists">

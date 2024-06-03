@@ -101,7 +101,7 @@ const memu = document.querySelector("#f1");
 memu.addEventListener("mouseenter", function () {
   const b = document.querySelector("#f2");
   const c = document.querySelector("#f3");
-  const d = document.querySelector("#f4");
+  
 
   function onmouse(a) {
     a.style.transform = "scale(1.03)";
@@ -113,19 +113,14 @@ memu.addEventListener("mouseenter", function () {
   c.addEventListener("mouseenter", function () {
     onmouse(c);
   });
-  d.addEventListener("mouseenter", function () {
-    onmouse(d);
-  });
 
   b.style.top = "100px";
   c.style.top = "150px";
-  d.style.top = "200px";
 
   setTimeout(re, 3000);
   function re() {
     b.style.top = "44px";
     c.style.top = "44px";
-    d.style.top = "44px";
   }
 });
 
@@ -174,3 +169,17 @@ Btn.addEventListener("mouseout", function () {
   moveBtnleft.style.backgroundColor = "rgba(255,255,255,0.1)";
   movebtnRight.style.backgroundColor = "rgba(255,255,255,0.1)";
 });
+
+function deleteLocal(item,a,b){
+  localStorage.removeItem(item);
+  localStorage.removeItem(a);
+  localStorage.removeItem(b);
+}
+
+const logOutBtn = document.querySelector("#f3");
+
+logOutBtn.addEventListener("click", (event)=>{
+  event.preventDefault();
+  deleteLocal("classname","username","token");
+  window.location.href="/";
+})

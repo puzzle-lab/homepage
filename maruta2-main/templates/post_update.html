@@ -22,21 +22,15 @@
               <img src="/static/설정 바.png" alt="3line" width="50px"></a>
               </div>
               <div id="f2">
-                <!-- 개인정보  -->
+                <!-- 로그아웃e -->
                 <a href=""
-                  ><img src="/static/개인설정.png" alt="개인정보" width="40px"
+                  ><img src="/static/문의.png" alt="" width="40px"
                 /></a>
               </div>
               <div id="f3">
-                <!-- 로그아웃e -->
-                <a href=""
-                  ><img src="/static/로그아웃.png" alt="" width="40px"
-                /></a>
-              </div>
-              <div id="f4">
                 <!-- 제거 할 부분 -->
                 <a href=""
-                  ><img src="/static/문의.png" alt="로그아웃" width="40px"
+                  ><img src="/static/로그아웃.png" alt="로그아웃" width="40px"
                 /></a>
               </div>
             </div>
@@ -78,6 +72,7 @@
                 <div class="title">  
                   <input type="text" name="title" placeholder="제목을 입력해주세요.">
                 </div>
+
                 <div class="uploadImg"style="display: none;">
                   <input type="file" name="image" id="file" value="사진 올리기" style="display: none;" multiple>
                 </div>
@@ -85,7 +80,6 @@
                   <textarea name="article" rows="5" cols="30" minlength="1">{{ result['article']}}</textarea>
                 </div>
                 <hr>
-                <label for="file">file</label>
                 <div class="createTextBtn">
                   <input type="submit" value="업데이트">
                   <input type="reset" value="취소">

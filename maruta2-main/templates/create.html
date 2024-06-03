@@ -20,16 +20,10 @@
         /></a>
       </div>
       <div id="f2">
-        <!-- 개인정보  -->
-        <a href=""
-          ><img src="../static/개인설정.png" alt="개인정보" width="40px"
-        /></a>
-      </div>
-      <div id="f3">
         <!-- 글쓰기 -->
         <a href=""><img src="../static/문의.png" alt="" width="40px" /></a>
       </div>
-      <div id="f4">
+      <div id="f3">
         <!-- 로그아웃e -->
         <a href=""
           ><img src="../static/로그아웃.png" alt="로그아웃" width="40px"
@@ -52,42 +46,41 @@
   </div>
   
   <div class="container">
-    <div  style="border-bottom:3px solid #29367c;margin-bottom:80px;">
+    <div  style="border-bottom:3px solid #e37676;margin-bottom:40px;">
       {% if table == "game" %}
-        <a href="/lists/game/1"><h1>게임 게시판</h1></a>
+        <a href="/lists/game/1">게임 게시판</a>
         {% endif %}
         {% if table == "japan" %}
-        <a href="/lists/japan/1"><h1>일본 게시판</h1></a>
+        <a href="/lists/japan/1">일본 게시판</a>
         {% endif %}
         {% if table == "music" %}
-        <a href="/lists/music/1"><h1>음악 게시판</h1></a>
+        <a href="/lists/music/1">음악 게시판</a>
         {% endif %}
         {% if table == "computer" %}
-        <a href="/lists/computer/1"><h1>컴퓨터 게시판</h1></a>
+        <a href="/lists/computer/1">컴퓨터 게시판</a>
         {% endif %}
         {% if table == "talk" %}
-        <a href="/lists/talk/1"><h1>잡담 게시판</h1></a>
+        <a href="/lists/talk/1">잡담 게시판</a>
         {% endif %}
     </div>
     <!-- 글 쓰기 페이지  -->
     <!-- 이미지 빼고는 다 넣게 해주세요 -->
     <form action="/create_{{table}}_post" method="post" enctype="multipart/form-data">
+      <div class="password">
+        <input type="text" name="nickname" minlength="2 where id=%s" placeholder="닉네임">
+        <input type="password" name="password" minlength="1" placeholder="글 비밀번호">
+      </div>
       <div class="title">  
-        <input type="text" name="title" placeholder="제목을 입력해주세요.">
+        <input type="text" name="title" placeholder="제목을 입력해주세요." minlength="1">
+      </div>
+      <div style="display: flex; justify-content: right;">
+        <label for="file">파일첨부</label>
       </div>
       <div class="uploadImg" style="display: none;">
         <input type="file" name="image" id="file" value="사진 올리기" style="display: none;" multiple>
       </div>
       <div class="textArea">
         <textarea name="article" rows="5" cols="30" minlength="1"></textarea>
-      </div>
-      <div style="display: flex; justify-content: right;">
-        <label for="file"><img src="../static/download.png" alt="" width="30px"
-           style="border: 1px solid rgb(104, 104, 104);border-radius: 5px;"></label>
-      </div>
-      <div class="password">
-        <input type="text" name="nickname" minlength="1" placeholder="닉네임">
-        <input type="password" name="password" minlength="2" placeholder="글 비밀번호">
       </div>
       <hr>
       <div class="createTextBtn">

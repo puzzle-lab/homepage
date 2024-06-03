@@ -100,3 +100,16 @@ nav > a:hover {
   font-weight: normal;
 }
 
+.j{
+  display: flex;
+  justify-content: right;
+}
+
+.jb{
+  font-size: 13px;
+  background-color: #0866ff;
+  color: #fff;
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+}

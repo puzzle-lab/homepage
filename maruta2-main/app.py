@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, url_for, redirect, jsonify 
 from flask_mysqldb import MySQL
-from flask_jwt_extended import *
 import pymysql, hashlib, os
 import pymysql.cursors
 
@@ -9,11 +8,8 @@ from route.login import login_blueprint
 app = Flask(__name__)
 
 app.config.update(
-    DEBUG = True,
-    JWT_SECRET_KEY = "asd"
-)
+    DEBUG = True)
 
-jwt = JWTManager(app)
 
 db = pymysql.connect(
     host="localhost",
@@ -22,7 +18,7 @@ db = pymysql.connect(
     database="information", 
     charset="utf8")
 cursor = db.cursor(pymysql.cursors.DictCursor)
-
+# upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
 upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
 app.config['upload_folder'] = upload_folder
 allowed = {'png', 'jpg', 'jpeg', 'gif'}
@@ -76,7 +72,7 @@ def login():
         if result["classnumber"] == classnumber:
             if result["password"] == encoded_password:
                 return jsonify(
-                    access_token = create_access_token(identity = classnumber, expires_delta= False), username = result['username'],
+                     username = result['username'],
                     ok = True)
             else:
                 return jsonify(
@@ -85,7 +81,7 @@ def login():
         else:
             return jsonify(False)
 
-# app.register_blueprint(login_blueprint)
+
 
 
 
@@ -207,7 +203,7 @@ def list_table_page(table, page):
 @app.route('/<table>/<title>/<int:id>', methods=['get', 'post'])
 def post(table, title, id):
     cursor.execute('USE post')
-    cursor.execute(f'select title, article, image, recommand, date from `{table}`  WHERE id=%s', (id, ))
+    cursor.execute(f'select title, article, image, nickname, recommand, date from `{table}`  WHERE id=%s', (id, ))
     result = cursor.fetchone()
     cursor.execute('''
     SELECT comment_id, nickname, date, article
@@ -248,11 +244,13 @@ def post_create_page(table):
 @app.route('/create_<table>_post', methods=["POST"])
 def post_create(table):
     title = request.form.get("title")
+    if title == None:
+        return
     article = request.form.get("article")
     password = request.form.get("password")
     file = request.files["image"]
     nickname = request.form.get("nickname")
-    if file:
+    if file and title and article and password:
         file_name = file.filename
         if file.filename.rsplit('.', 1)[1].lower() not in allowed:
             return 'File type allowed jpg, jpeg, png, gif', 400
@@ -262,10 +260,12 @@ def post_create(table):
             cursor.execute(f"INSERT INTO `{table}` (title, article, image, nickname, password, date) VALUES('{title}', '{article}', '{file_path}', '{nickname}', '{password}', NOW())")
             db.commit()
             return redirect(url_for('list_table_page', table=table, page=1))
-    else:
+    elif title and article and password:
         cursor.execute(f"INSERT INTO `{table}` (title, article, nickname, password, date) VALUES('{title}', '{article}', '{nickname}', '{password}', NOW())")
         db.commit()
         return redirect(url_for('list_table_page', table = table, page = 1))
+    elif not title or not article or not password:
+        return render_template("create.html", table = table)
     
 #create comment
 @app.route('/<table>/<title>/<int:id>/comment', methods=['POST'])

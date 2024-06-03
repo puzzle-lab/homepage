@@ -143,7 +143,7 @@ function checkpass(event){
             g.classList.remove("hidden");
             const h1 = g.querySelector("h1");
             h1.style.fontSize="30px";
-            h1.innerText = `${userInf.username}님 가입을 축하합니다.\n잠시 기다려주세요.\n-일간베스트 일동-`;
+            h1.innerText = `${userInf.username}님 가입을 축하합니다.\n잠시 기다려주세요.`;
             setTimeout(lastText,1000)
             function lastText(){
                 h1.style.color = "black";
