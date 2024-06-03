@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: "Noto Sans KR", sans-serif ;
+}
+
+
+.container {
+  margin: 30px 23% 20px 23%;
+}
+
+h1 {
+  text-align: left;
+  font-size: 17px;
+}
+
+.contentarea {
+  border-radius: 5px;
+  border: none;
+}
+
+.container img {
+  width: 350px;
+  margin: 30px 0;
+}
+
+.container h3 {
+  text-align: left;
+  font-size: 20px;
+  padding: 8px 8px 8px 8px;
+}
+
+.textInf {
+  display: flex;
+  justify-content: right;
+  margin: 10px 0;
+}
+.text p {
+  margin: 0 10px;
+}
+
+.createrAreaPw {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.createrArea {
+  display: none;
+  justify-content: center;
+  margin: 0px 10px;
+}
+
+
+
+.createrArea form {
+  margin: 10px 10px;
+}
+
+.createrArea form input {
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+  font-size: 17px;
+  width: 120px;
+  outline: none;
+}
+
+.createrAreaPw #contentpw {
+  width: 150px;
+  height: 30px;
+  background-color: #cbcbcb;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: 18px;
+}
+
+.createrAreaPw form input:last-child {
+  width: 100px;
+  height: 32px;
+  background-color: #0866ff;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+}
+.createrAreaPw form input:last-child:hover {
+  box-shadow: 0 1px 7px rgb(78, 78, 78);
+}
+
+.createrArea form:first-child input {
+  background-color: #0866ff;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.createrArea form:first-child input:hover {
+  box-shadow: 0 1px 7px rgb(78, 78, 78);
+}
+
+.createrArea form:last-child input {
+  background-color: rgb(160, 160, 160);
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+}
+.createrArea form:last-child input:hover {
+  box-shadow: 0 1px 7px rgb(78, 78, 78);
+}
+
+.recommand {
+  display: flex;
+  justify-content: center;
+}
+
+.recommand form {
+  display: flex;
+  justify-content: center;
+}
+
+.recommand form input {
+  height: 50px;
+  width: 50px;
+  margin: 30px 0;
+  color: white;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  transition: all 0.5s ease-in-out;
+}
+.recommand form input:hover {
+  transform: scale(1);
+  box-shadow: 0 3px 8px rgb(102, 102, 102);
+}
+.recommand form input:focus {
+  outline: none;
+}
+.review-form {
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+
+.c {
+  display: flex;
+  justify-content: left;
+  margin: 15px 4% 10px 4%;
+}
+.c input {
+  margin: 0 5px;
+  background-color: #c9c9c9;
+  padding: 5px 10px;
+  border: none;
+  width: 15%;
+}
+.c input:focus {
+  outline: none;
+}
+
+.b {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0 0;
+}
+
+form #review {
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: 90%;
+  height: 50px;
+  padding: none;
+}
+
+.a {
+  display: flex;
+  justify-content: right;
+  margin: 0 5% 10px 5%;
+}
+
+#writetext {
+  width: 60px;
+  height: 30px;
+  background-color: #0866ff;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+}
+
+#writetext:hover {
+  box-shadow: 0 3px 8px rgb(102, 102, 102);
+}
+
+.bottom {
+  margin: 10px 0px;
+  padding: 10px 0;
+}
+
+.name-date {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px;
+}
+
+.bottom-review {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-review p:first-child{
+  margin-right: 40px;
+}
+
+.delete-form {
+  display: flex;
+  justify-content: right;
+  border-bottom: 1px solid black;
+}
+.inputvB{
+  transition: all 1.5 ease-in-out;
+}
+
+.tt{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px;
+}
+.del{
+  background-color: #0866ff;
+  padding: 2px 5px;
+  color:#fff;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  width: 50px;
+  height: 25px;
+}
+
+.delete-form{
+  display: flex;
+  justify-content: right;
+  height: 100%;
+  align-items: center;
+}
+.delete-form > input{
+  margin: 0 3px;
+}
+
+
+.textInf{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  border-bottom: 1px solid rgb(124, 124, 124);
+  padding-bottom: 10px;
+}
+.textInf p:first-child{
+  margin-right: 10px;
+}
+
+.last {
+  position: relative;
+  bottom: auto;
+  display: flex;
+  justify-content: center;
+  padding: 80px 0 40px 0;
+  width: 100%;
+  background-color: rgb(43, 42, 42);
+  color: #fff;
+}
+
+.lastArea {
+  margin: 0 20%;
+}
+
+.a1,
+.a2 {
+  display: flex;
+  justify-content: center;
+}
+
+.a1 h3,
+.a2 h4 {
+  margin: 20px 5px 15px 5px;
+}
+.a2 h4 {
+  margin-bottom: 30px;
+}
+
+.title{
+  display: flex;
+  justify-content: left;
+  font-size: 22px;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom:3px solid #e37676;margin-bottom:20px;
+}
+
+.title a{
+  text-decoration: none;
+  color:#e37676;
+  margin-bottom: 10px;
+}

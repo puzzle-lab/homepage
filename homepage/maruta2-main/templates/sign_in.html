@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/index2.css">
+</head>
+<body>
+    <!-- 각 DIV값은 페이지에 등장하는 순서대로 ID값을 abcdefg로 설정 -->
+    <!-- 전체 div의 css를 일괄적으로 적용하기 위해 class="a"통일 -->
+
+
+    <!-- 초기 설명 진행설명 -->
+    <div class="a" id="a">
+        <h1 class=""></h1>
+    </div>
+
+    <!-- 아래부터 학번 입력란 -->
+    <div class="a hidden div-form" id="b">
+        <form action="/sign_in" method="post" class="num">
+            <label for="num">학번을 알려주세요!</label><br>
+            <input type="text" value="" id="num" required maxlength="7" minlength="7">
+            <input class="submit" type="submit">
+        </form>
+    </div>
+
+    <!-- 아래부터 이름 입력란 -->
+    <div class="a hidden div-form" id="c">
+        <form action="sign_in.html" method="post" class="name">
+            <label for="name">이름을 입력해주세요!</label><br>
+            <input type="text" value="" id="name" required maxlength="3" minlength="3">
+            <input class="submit" type="submit">
+        </form>
+    </div>
+
+    <!-- 아래부터 이름+반갑습니다~~ -->
+    <div class="a hidden" id="d">
+        <h1 class=""></h1>
+    </div>
+
+    <!-- 아래부터 비밀번호 입력란 -->
+    <div class="a hidden div-form" id="e">
+        <form action="" method="" class="pw">
+            <label for="pw">비밀번호를 입력해주세요!<br></label><br>
+            <input type="text" value="" id="pw" required maxlength="12" minlength="5">
+            <input class="submit" type="submit">
+        </form>
+    </div>
+
+    <!-- 아래부터 비밀번호 재확인 -->
+    <div class="a hidden div-form" id="f" class="againPw">
+        <form action="" class="pw1">
+            <label for="pw1">비밀번호를 한번 더 입력해주세요!</label><br>
+            <input type="text" value="" id="pw1" required maxlength="12" minlength="5">
+            <input class="submit" type="submit">
+        </form>
+    </div>
+
+    <!-- 아래부터 가입 환영란 -->
+    <div class="a hidden" id="g">
+        <h1 class=""></h1>
+    </div>
+    
+    <script src="../static/index2.js"></script>
+</body>
+</html>
