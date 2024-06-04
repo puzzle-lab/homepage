@@ -196,37 +196,60 @@ def list_table_page(table, page):
 
 @app.route('/lists/best/<int:page>')
 def best(page):
-    cursor.execute(f"""
-                SELECT id, title, `table`, COUNT(*) as cnt
+    cursor.execute("USE post")
+    cursor.execute("""
+                SELECT id, title, `table`, date, nickname, recommand
                 FROM
     (
-        SELECT id, title, `table`, recommand, date, nickname, recommand
+        SELECT id, title, `table`, recommand, date, nickname 
         FROM game where recommand >= 5
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM japan
-        UNION 
-        SELECT id, title, `table`, recommand >= 5
-        FROM music
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM computer
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM talk
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname
+        FROM japan where recommand >= 5
+        UNION  ALL
+        SELECT id, title, `table`, recommand, date, nickname 
+        FROM music where recommand >= 5
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname 
+        FROM computer where recommand >= 5
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname
+        FROM talk where recommand >= 5
     )
     AS combined_table
-    ORDER BY CAST (recommand AS SIGNED) DESC
+    ORDER BY cast(recommand as signed) DESC
     LIMIT 20;
     """
     )
     results = cursor.fetchall()
-    total = int(results['cnt'])
-    total_page = (total // 10 ) + 1
-    title = results['title']
-    table = results['table']
-    id = results['id']
-    return render_template('post_list2.html',results = results, page = page, table = table, total_page = total_page )
+    cursor.execute("""
+                SELECT COUNT(*) as cnt 
+                FROM (
+                    SELECT id FROM game WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM japan WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM music WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM computer WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM talk WHERE recommand >= 5
+                ) AS combined   
+            """)
+    
+    total = cursor.fetchone()
+    int_total = int(total['cnt'])
+    total_page = (int_total // 10 ) + 1
+    table = []
+    id = []
+    print(len(results))
+    print(results)
+    for x in range(len(results)):
+            table.append(results[x]['table'])
+            print(table)
+            id.append(results[x]['id'])
+    return render_template('post_list2.html', results=results, page=page, table=table, total_page=total_page, id=id, length=len(results))
+
 
 
 

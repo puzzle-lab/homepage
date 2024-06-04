@@ -60,18 +60,14 @@
         {% endif %}
       </div>
       <!-- 글 생성하기 버튼 -->
-      <div class="btnarea">
-        <form action="/{{ table }}/create" method="get">
-          <button class="createTextBtn">글쓰기</button>
-        </form>
-      </div>
       {% for result in results %}
       <div class="text-area">
         <!-- 글 리스트 (10개) -->
         <div style="display: flex; height: 100%; align-items: center">
-          <a href="/{{ table }}/{{ result['title']}}/{{result['id']}}"
-            >{{result['title']}}</a
+          <a href="/{{ table[loop.index0] }}/{{ result['title']}}/{{result['id']}}"
+            >{{result['title']}} </a
           >
+          
           <div style="display: flex; height: 100%; align-content: center">
             <p style="font-size: 11px; color: rgb(90, 90, 90)">
               {{ result['date']}}
