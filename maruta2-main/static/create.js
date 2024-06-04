@@ -21,13 +21,13 @@ window.addEventListener("scroll", function () {
       const nav = document.querySelector("nav");
       nav.classList.add("navOnscroll");
   
-      nav.style.backgroundColor = "rgba(140, 140, 140, 0.4)";
+      nav.style.backgroundColor = "rgba(180, 180, 180, 0.4)";
       nav.style.borderRadius = "50px";
       nav.style.backdropFilter = "blur(15px)"; /* 배경을 10px로 흐리게 만듦 */
     }
-    if (this.scrollY >= 150) {
+    if (this.scrollY >= 120) {
       const nav = document.querySelector("nav");
-      nav.style.top = "40px";
+      nav.style.top = "20px";
     } else {
       const nav = document.querySelector("nav");
       nav.style.top = "140px";
@@ -78,5 +78,60 @@ logOutBtn.addEventListener("click", (event)=>{
   window.location.href="/";
 })
 
+const createContent = document.querySelector("#create-Content");
+const nickname = document.querySelector("#nickname");
+const password = document.querySelector("#password");
+const contentText = document.querySelector("#contentText");
+const title = document.querySelector("#title");
+let num1 =0;
+let num2=0;
+let num3=0;
+let num4=0;
 
 
+function checkInput(a,b,c,d){
+  a.addEventListener("input",()=>{
+    const q = a.value.length;
+    return num1 = q, e()
+  })
+  b.addEventListener("input",()=>{
+    const w = b.value.length;
+    return num2 = w, e()
+  })
+  c.addEventListener("input",()=>{
+    const h = c.value.length;
+    return num3 = h, e()
+  })
+  d.addEventListener("input",()=>{
+    const r = d.value.length;
+    return num4 = r, e()
+  })
+  function e(){
+    console.log(num1,num2,num3,num4);
+    const admin = document.querySelector("#byText");
+    if(num1>=1&&num2>=1&&num3>=1&&num4>=1){
+      admin.disabled = false;
+      admin.style.backgroundColor = "#e37676";
+    }else{
+      admin.disabled = true;
+      admin.style.backgroundColor = "rgb(161,161,161);"
+    }
+  }
+}
+
+checkInput(nickname,password,title,contentText)
+
+const reset = document.querySelector("#reset");
+reset.addEventListener("click", ()=>{
+  num1 = 0;
+  num2 = 0;
+  num3 = 0;
+  num4 = 0; 
+  function e(){
+    console.log(num1,num2,num3,num4);
+    const admin = document.querySelector("#byText");
+    admin.disabled = true;
+    admin.style.backgroundColor = "rgb(161,161,161);";
+  }
+  e();
+})

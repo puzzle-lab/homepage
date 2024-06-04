@@ -83,7 +83,7 @@ h1 {
 .createrAreaPw form input:last-child {
   width: 100px;
   height: 32px;
-  background-color: #0866ff;
+  background-color: #e37676;
   color: white;
   border-radius: 5px;
   border: none;
@@ -186,7 +186,7 @@ form #review {
 #writetext {
   width: 70px;
   height: 35px;
-  background-color: #0866ff;
+  background-color: #808080;
   font-size: 17px;
   font-weight: bold;
   color: white;

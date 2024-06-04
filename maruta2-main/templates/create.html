@@ -65,13 +65,13 @@
     </div>
     <!-- 글 쓰기 페이지  -->
     <!-- 이미지 빼고는 다 넣게 해주세요 -->
-    <form action="/create_{{table}}_post" method="post" enctype="multipart/form-data">
+    <form action="/create_{{table}}_post" id="create-Content" method="post" enctype="multipart/form-data">
       <div class="password">
-        <input type="text" name="nickname" minlength="1 where id=%s" placeholder="글쓴이">
-        <input type="password" name="password" minlength="1" placeholder="글 비밀번호">
+        <input type="text" name="nickname" id="nickname" minlength="1" placeholder="글쓴이">
+        <input type="password" name="password" id="password" minlength="1" placeholder="글 비밀번호">
       </div>
       <div class="title">  
-        <input type="text" name="title" placeholder="제목을 입력해주세요." minlength="1">
+        <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." minlength="1">
       </div>
       <div style="display: flex; justify-content: right;">
         <label for="file">파일첨부</label>
@@ -80,12 +80,12 @@
         <input type="file" name="image" id="file" value="사진 올리기" style="display: none;" multiple>
       </div>
       <div class="textArea">
-        <textarea name="article" rows="5" cols="30" placeholder="글쓴이, 비밀번호, 제목과 내용을 꼭 입력해주세요." minlength="1"></textarea>
+        <textarea name="article" id="contentText" rows="5" cols="30" placeholder="글쓴이, 비밀번호, 제목과 내용을 꼭 입력해주세요." minlength="1"></textarea>
       </div>
       <hr>
       <div class="createTextBtn">
-        <input type="submit" value="글쓰기">
-        <input type="reset" value="취소">
+        <input type="submit" id="byText" value="글쓰기" disabled>
+        <input type="reset" id="reset" value="취소">
       </div>
     </form>
   </div>

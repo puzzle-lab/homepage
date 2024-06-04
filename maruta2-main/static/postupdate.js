@@ -29,14 +29,14 @@ window.addEventListener("scroll", function () {
     const a = this.document.querySelector("nav a");
     nav.classList.add("navOnscroll");
 
-    nav.style.backgroundColor = "rgba(160, 160, 160, 0.4)";
+    nav.style.backgroundColor = "rgba(180, 180, 180, 0.4)";
     nav.style.borderRadius = "50px";
     nav.style.backdropFilter = "blur(15px)";
     // 배경을 흐리게 만드는 부분
   }
-  if (this.scrollY >= 150) {
+  if (this.scrollY >= 120) {
     const nav = document.querySelector("nav");
-    nav.style.top = "40px";
+    nav.style.top = "20px";
   } else {
     const nav = document.querySelector("nav");
     nav.style.top = "140px";
