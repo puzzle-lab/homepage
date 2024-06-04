@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https: //fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="loginform">
+      <!-- 아래에 니가 action하고 method정해서 ㄱㄱ -->
+      <form action="/login" method="post" class="login-form">
+        <img src="../static/마루타 이미지.png" alt="메인이미지" />
+        <!-- 아래부터 아이디 -->
+        <div class="gradient-border">
+          <div class="id-area">
+            <input type="text" id="id" value="" placeholder="classNum" />
+            <!-- 아래부터 비밀번호 -->
+          </div>
+          <div class="pw-area">
+            <input type="password" id="pw" value="" placeholder="PW" />
+          </div>
+          <div class="btn">
+            <input type="submit" value="로그인">
+          </div>
+          <div class="bottom">
+            <a href="/find_pw">비밀번호 찾기</a>
+            <a href="/sign_in">회원가입</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="../static/index.js"></script>
+  </body>
+</html>

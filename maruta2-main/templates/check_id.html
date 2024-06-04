@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/pw_reselection.css">
+</head>
+<body>
+    <div class="home">
+        <a href="/"><img src="../static/마루타 이미지.png" alt=""></a>
+    </div>
+    <div class="top">
+        <h1>비밀번호 변경</h1>
+        <p>비밀번호 변경을 희망하시면 이름과 학번을 입력하고 인증 후 변경할 비밀번호를 입력해주세요.</p>
+        <br>
+        <p>타인의 이름, 학번으로 비밀번호 변경 시 반드시 찾아내서 응징합니다. </p>
+    </div>
+
+    <div class="checkarea">
+        <form action="/check_id" method="post">
+            <div class="username">
+                <label for="username">이름</label>
+                <input type="text" id="username" value="" placeholder="이름을 입력해주세요.">
+            </div>
+            <div class="classnumber">
+                <label for="classnumber">학번</label>
+                <input type="text" id="classnumber" value="" placeholder="학번을 입력해주세요.">
+            </div>
+            <div class="checkinf">
+                <input type="submit" id="checkinf" value="인증하기">
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div class="a">
+        <h2>비밀번호를 재설정해주세요.</h2>
+        
+        <p style="text-align: center;margin: 15px 0;">보안이 취약함으로 가능한 잘 사용하지 않는 비밀번호로 설정해주세요.</p>
+    </div>
+    <div class="newpw">
+        <form action="/pw_reselection" method="post">
+            <div class="newpassword">
+                <label for="newpw">비밀번호</label>
+                <input type="password" name="new_pw" id="newpw" placeholder="새 비밀번호 입력" disabled>
+            </div>
+            <div class="createpw">
+                <input type="submit" id="k" value="변경하기" disabled>
+            </div>
+        </form>
+    </div>
+    <script src="../static/pw_reselection.js"></script>
+</body>
+</html>
