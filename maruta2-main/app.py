@@ -194,8 +194,39 @@ def list_table_page(table, page):
     results = cursor.fetchall()
     return render_template('post_list.html', results = results, page = page, table = table, total_page = total_page )
 
-   
-
+@app.route('/lists/best/<int:page>')
+def best(page):
+    cursor.execute(f"""
+                SELECT id, title, `table`, COUNT(*) as cnt
+                FROM
+    (
+        SELECT id, title, `table`, recommand
+        FROM game where recommand >= 5
+        UNION
+        SELECT id, title, `table`, recommand >= 5
+        FROM japan
+        UNION 
+        SELECT id, title, `table`, recommand >= 5
+        FROM music
+        UNION
+        SELECT id, title, `table`, recommand >= 5
+        FROM computer
+        UNION
+        SELECT id, title, `table`, recommand >= 5
+        FROM talk
+    )
+    AS combined_table
+    ORDER BY CAST (recommand AS SIGNED) DESC
+    LIMIT 20;
+    """
+    )
+    results = cursor.fetchall()
+    total = int(results['cnt'])
+    total_page = (total // 10 ) + 1
+    title = results['title']
+    table = results['table']
+    id = results['id']
+    return render_template('post_list.html',page = page, table = table, total_page = total_page )
 
 
 
