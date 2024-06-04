@@ -200,7 +200,7 @@ def best(page):
                 SELECT id, title, `table`, COUNT(*) as cnt
                 FROM
     (
-        SELECT id, title, `table`, recommand
+        SELECT id, title, `table`, recommand, date, nickname, recommand
         FROM game where recommand >= 5
         UNION
         SELECT id, title, `table`, recommand >= 5
@@ -226,7 +226,7 @@ def best(page):
     title = results['title']
     table = results['table']
     id = results['id']
-    return render_template('post_list.html',page = page, table = table, total_page = total_page )
+    return render_template('post_list2.html',results = results, page = page, table = table, total_page = total_page )
 
 
 
