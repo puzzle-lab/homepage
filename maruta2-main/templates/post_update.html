@@ -78,7 +78,8 @@
                 </div>
                 <div class="textArea">
                   <textarea name="article" rows="5" cols="30" minlength="1">
-                    <div>{{ result['image'] }}</div>
+                    {{ result['image'] }}
+                    {% print(result['image']) %}
                     {{ result['article']}}
                   </textarea>
                 </div>
