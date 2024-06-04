@@ -76,7 +76,7 @@
       <!-- 추천 수  max 50-->
       <div class="textInf"> 
         <div style="display: flex;justify-content: left;height: 20px; align-items: center;">
-          <p style="font-size: 17px;color:#5c5c5c;">
+          <p style="font-size: 17px;color:#5c5c5c;font-weight: bold;">
             {{ result['nickname'] }} 
           </p>
           <span style="border-right: 2px solid #5c5c5c;height: 15px;margin: 0 5px;"></span>
@@ -88,16 +88,17 @@
           <p style="font-weight: bold;">{{ date_parts[0] }} {{date_parts[1]}} {{ date_parts[2] }}&nbsp; {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
         </div>
         <div style="display: flex;justify-content: right;">
-          <p style="font-size: 17px;color:#5c5c5c">추천 : {{ result['recommand'] }}</p>
+          <p style="font-size: 17px;color:#5c5c5c;font-weight: bold;">추천 : {{ result['recommand'] }}</p>
         </div>
       </div>
       <div class="contentarea" style="min-height: 400px;">
         <div class="j">
-          <button class="jb">글삭제</button>
+          <button class="jb">글 수정</button>
         </div>
         <!--이미지 -->
         <!-- 이미지 공간 할당(권위자의 조언) -->
-        <img src="{{ result['image'] }}" alt="Post image" />
+        <div class="hh"></div>
+        <img class="imgArea" src="{{ result['image'] }}" alt="Post image"/>
         <!-- 본문 최대 한글 300자 -->
         <h3>{{ result['article'] }}</h3>
       </div>
@@ -117,7 +118,7 @@
 
         <!-- 삭제 버튼 / 누르면 지워짐 -->
         <form action="/{{ table }}/{{ title }}/{{id}}/delete">
-          <input type="submit" value="글 삭제" />
+          <input type="submit" value="삭제" />
         </form>
       </div>
 
@@ -237,5 +238,6 @@
     </div>      
     <script src="../static/post.js"></script>
     <script src="../static/post-2.js"></script>
+    <script src="../static/logininf.js"></script>
   </body>
 </html>

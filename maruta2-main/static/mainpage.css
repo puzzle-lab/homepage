@@ -181,31 +181,22 @@ nav > a:hover {
   display: flex;
   justify-content: space-between;
   margin: 80px 0 0 0;
-  padding: 80px 9% 160px 9%;
+  padding: 100px 15% 100px 15%;
   background-color: #ededed;
-}
-
-.best ul,
-.new ul {
-  position: absolute;
-  left: 430px;
-}
-.best ul li,
-.new ul li {
-  font-size: 20px;
 }
 
 .new {
   display: flex;
   justify-content: space-between;
-  padding: 80px 9% 160px 9%;
+  padding: 100px 15% 100px 15%;
   margin-bottom: 80px;
 }
 
-.best a,
-.new a {
+.best div ul li a,
+.new div ul li a {
   text-decoration: none;
-  font-size: 18px;
+  font-size: 19px;
+  color: black;
 }
 /* -------------------------------------------------------------- */
 /* .bestArea{

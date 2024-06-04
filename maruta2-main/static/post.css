@@ -112,4 +112,5 @@ nav > a:hover {
   padding: 3px;
   border: none;
   border-radius: 5px;
+  font-weight: bold;
 }

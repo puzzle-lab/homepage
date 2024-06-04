@@ -33,6 +33,16 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+const imgArea =document.querySelector(".imgArea");
+const h = imgArea.src;
+
+if(h.substring(h.length - 4)=="None"){
+  console.log("dd");
+  const hh = document.querySelector(".hh");
+  imgArea.remove();
+  hh.innerHTML=`<img class="imgArea" src="https://i.namu.wiki/i/_ePFzzXCg1C9Gp7QAqW752d3pPxQacLN6rqw1Yw9vnjPANOJVSpbXNULvCz2Fh6ThnAVGge5A-NUlD4RHifODC4Vor7JuNeHCpdBMVNJOTMFdw9tFE-saSSYehJHcaa8JcHtZbe3kxJ1eZ6bBnJzPA.svg" alt="Post image"/style="width:150px;">`;
+}
+
 const boxArea = document.querySelector(".boxArea");
 
 const bottomBar = document.querySelectorAll(".bottomBar div");
@@ -205,3 +215,4 @@ jb.addEventListener("click",(event)=>{
     jj.style.display = "flex";
   }
 })
+

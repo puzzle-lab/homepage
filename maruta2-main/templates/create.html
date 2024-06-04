@@ -67,7 +67,7 @@
     <!-- 이미지 빼고는 다 넣게 해주세요 -->
     <form action="/create_{{table}}_post" method="post" enctype="multipart/form-data">
       <div class="password">
-        <input type="text" name="nickname" minlength="2 where id=%s" placeholder="닉네임">
+        <input type="text" name="nickname" minlength="1 where id=%s" placeholder="글쓴이">
         <input type="password" name="password" minlength="1" placeholder="글 비밀번호">
       </div>
       <div class="title">  
@@ -80,7 +80,7 @@
         <input type="file" name="image" id="file" value="사진 올리기" style="display: none;" multiple>
       </div>
       <div class="textArea">
-        <textarea name="article" rows="5" cols="30" minlength="1"></textarea>
+        <textarea name="article" rows="5" cols="30" placeholder="글쓴이, 비밀번호, 제목과 내용을 꼭 입력해주세요." minlength="1"></textarea>
       </div>
       <hr>
       <div class="createTextBtn">
@@ -112,5 +112,6 @@
     </div>
   </div>
   <script src="../static/create.js"></script>
+  <script src="../static/logininf.js"></script>
 </body>
 </html>
