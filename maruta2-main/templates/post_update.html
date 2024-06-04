@@ -70,14 +70,17 @@
               <!-- 이미지 빼고는 다 넣게 해주세요 -->
               <form action="/{{ table }}/{{ title }}/{{id}}/update_page/update" method="post" enctype="multipart/form-data">
                 <div class="title">  
-                  <input type="text" name="title" placeholder="제목을 입력해주세요.">
+                  <input type="text" name="title" placeholder="제목을 입력해주세요." value=" {{ result['article']}}">
                 </div>
 
-                <div class="uploadImg"style="display: none;">
-                  <input type="file" name="image" id="file" value="사진 올리기" style="display: none;" multiple>
+                <div class="uploadImg">
+                  <input type="file" name="image" id="file" value="사진 올리기"  multiple>
                 </div>
                 <div class="textArea">
-                  <textarea name="article" rows="5" cols="30" minlength="1">{{ result['article']}}</textarea>
+                  <textarea name="article" rows="5" cols="30" minlength="1">
+                    <div>{{ result['image'] }}</div>
+                    {{ result['article']}}
+                  </textarea>
                 </div>
                 <hr>
                 <div class="createTextBtn">
