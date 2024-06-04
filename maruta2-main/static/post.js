@@ -77,24 +77,14 @@ window.addEventListener("scroll", function () {
     const a = this.document.querySelector("nav a");
     nav.classList.add("navOnscroll");
 
-<<<<<<< HEAD
-    nav.style.backgroundColor = "rgba(160, 160, 160, 0.4)";
-=======
     nav.style.backgroundColor = "rgba(180, 180, 180, 0.4)";
->>>>>>> origin/main
     nav.style.borderRadius = "50px";
     nav.style.backdropFilter = "blur(15px)";
     // 배경을 흐리게 만드는 부분
   }
-<<<<<<< HEAD
-  if (this.scrollY >= 150) {
-    const nav = document.querySelector("nav");
-    nav.style.top = "40px";
-=======
   if (this.scrollY >= 120) {
     const nav = document.querySelector("nav");
     nav.style.top = "20px";
->>>>>>> origin/main
   } else {
     const nav = document.querySelector("nav");
     nav.style.top = "140px";
@@ -226,8 +216,6 @@ jb.addEventListener("click",(event)=>{
   }
 })
 
-<<<<<<< HEAD
-=======
 
 const nickname = document.querySelector("#nickname");
 const password = document.querySelector("#textpw");
@@ -264,4 +252,3 @@ function checkInput(a,b,c){
 };
 
 checkInput(nickname,password,review);
->>>>>>> origin/main

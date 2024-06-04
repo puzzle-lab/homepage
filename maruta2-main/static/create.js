@@ -21,15 +21,6 @@ window.addEventListener("scroll", function () {
       const nav = document.querySelector("nav");
       nav.classList.add("navOnscroll");
   
-<<<<<<< HEAD
-      nav.style.backgroundColor = "rgba(140, 140, 140, 0.4)";
-      nav.style.borderRadius = "50px";
-      nav.style.backdropFilter = "blur(15px)"; /* 배경을 10px로 흐리게 만듦 */
-    }
-    if (this.scrollY >= 150) {
-      const nav = document.querySelector("nav");
-      nav.style.top = "40px";
-=======
       nav.style.backgroundColor = "rgba(180, 180, 180, 0.4)";
       nav.style.borderRadius = "50px";
       nav.style.backdropFilter = "blur(15px)"; /* 배경을 10px로 흐리게 만듦 */
@@ -37,7 +28,6 @@ window.addEventListener("scroll", function () {
     if (this.scrollY >= 120) {
       const nav = document.querySelector("nav");
       nav.style.top = "20px";
->>>>>>> origin/main
     } else {
       const nav = document.querySelector("nav");
       nav.style.top = "140px";
@@ -88,10 +78,8 @@ logOutBtn.addEventListener("click", (event)=>{
   window.location.href="/";
 })
 
-<<<<<<< HEAD
 
 
-=======
 const createContent = document.querySelector("#create-Content");
 const nickname = document.querySelector("#nickname");
 const password = document.querySelector("#password");
@@ -149,4 +137,3 @@ reset.addEventListener("click", ()=>{
   }
   e();
 })
->>>>>>> origin/main
