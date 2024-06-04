@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:  "Noto Sans KR", sans-serif ;
+}
+
+
+.a{
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    width: 550px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.a h1{
+    color:#fff;
+    transition: color 1s ease-in-out;
+}
+
+
+.a > label, input{
+    display: flex;
+    justify-content: center;
+    width: 550px;
+    height: 35px;
+    padding: 10px 0 10px 0;
+    margin: 50px 0 50px 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #11e71c, #2520ae); 
+    border-image-slice: 1;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    font-family:  "Noto Sans KR";
+}
+
+
+.div-form{
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hidden{
+    display:none;
+}
+
+.submit{
+    opacity: 0;               /* 시각적으로 숨김 */
+    position: absolute;       /* 레이아웃에서 분리 */
+    left: -9999px;            /* 화면 밖으로 이동 */
+    pointer-events: none;
+}
+
+
+
+
+
+
+
