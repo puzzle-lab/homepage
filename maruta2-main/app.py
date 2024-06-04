@@ -12,14 +12,14 @@ app.config.update(
 
 
 db = pymysql.connect(
-    host="localhost",
+   host="localhost",
     user="root",
-    password="123",
+   password="123",
     database="information", 
     charset="utf8")
 cursor = db.cursor(pymysql.cursors.DictCursor)
-# upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
-upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
+upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
+#upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
 app.config['upload_folder'] = upload_folder
 allowed = {'png', 'jpg', 'jpeg', 'gif'}
 app.jinja_env.globals['url_for'] = url_for
@@ -363,7 +363,7 @@ def post_delete(table, title, id):
 
 
 
-#go to ilbe
+
 @app.route('/<table>/<title>/<int:id>/recommand', methods=['post'])
 def post_recommand(table, title, id):
     cursor.execute('USE post')
@@ -384,12 +384,6 @@ def post_recommand(table, title, id):
         return jsonify(result = "false", state = 404)
     
 
-    
-    # cursor.execute(f'UPDATE `{table}` SET recommand= recommand + 1 WHERE id=%s', (id,))
-    # db.commit()
-    
-    # return redirect(url_for('post', table = table, title = title, id = id))
-
 
 
 
@@ -398,6 +392,6 @@ def post_recommand(table, title, id):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run(host="0.0.0.0", port=8000)
     
     
