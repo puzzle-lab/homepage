@@ -194,6 +194,7 @@ def list_table_page(table, page):
     results = cursor.fetchall()
     return render_template('post_list.html', results = results, page = page, table = table, total_page = total_page )
 
+
 @app.route('/lists/best/<int:page>')
 def best(page):
     cursor.execute("USE post")
@@ -249,6 +250,7 @@ def best(page):
             print(table)
             id.append(results[x]['id'])
     return render_template('post_list2.html', results=results, page=page, table=table, total_page=total_page, id=id, length=len(results))
+
 
 
 
@@ -424,14 +426,18 @@ def post_recommand(table, title, id):
     get_json = request.get_json()
     classnumber = get_json['classnumber']
 
+
     cursor.execute(f"SELECT classnumber from {table}_likeit where classnumber = {classnumber} AND id={id};")
     result = cursor.fetchone()
     if result == None:
+
         cursor.execute(f"INSERT INTO {table}_likeit (classnumber, id, likeit) VALUES ({classnumber}, {id}, {1})")
         cursor.execute(f"UPDATE `{table}` set recommand= recommand + 1 where id={id}")
         db.commit()
         return jsonify(result = "true", state = 200)
     elif result:
+
+
         cursor.execute(f"DELETE FROM {table}_likeit where classnumber = {classnumber}")
         cursor.execute(f"UPDATE `{table}` set recommand = recommand - 1 where id={id}")
         db.commit()
@@ -441,11 +447,13 @@ def post_recommand(table, title, id):
 
 
 
+
         
 
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000)
+  app.run(host="0.0.0.0", port=8000)
+
     
     

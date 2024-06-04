@@ -77,14 +77,24 @@ window.addEventListener("scroll", function () {
     const a = this.document.querySelector("nav a");
     nav.classList.add("navOnscroll");
 
+<<<<<<< HEAD
     nav.style.backgroundColor = "rgba(160, 160, 160, 0.4)";
+=======
+    nav.style.backgroundColor = "rgba(180, 180, 180, 0.4)";
+>>>>>>> origin/main
     nav.style.borderRadius = "50px";
     nav.style.backdropFilter = "blur(15px)";
     // 배경을 흐리게 만드는 부분
   }
+<<<<<<< HEAD
   if (this.scrollY >= 150) {
     const nav = document.querySelector("nav");
     nav.style.top = "40px";
+=======
+  if (this.scrollY >= 120) {
+    const nav = document.querySelector("nav");
+    nav.style.top = "20px";
+>>>>>>> origin/main
   } else {
     const nav = document.querySelector("nav");
     nav.style.top = "140px";
@@ -216,3 +226,42 @@ jb.addEventListener("click",(event)=>{
   }
 })
 
+<<<<<<< HEAD
+=======
+
+const nickname = document.querySelector("#nickname");
+const password = document.querySelector("#textpw");
+const review = document.querySelector("#review");
+let num1=0;
+let num2=0;
+let num3=0;
+
+function checkInput(a,b,c){
+  a.addEventListener("input",()=>{
+    const q = a.value.length;
+    return num1 = q, e()
+  })
+  b.addEventListener("input",()=>{
+    const w = b.value.length;
+    return num2 = w, e()
+  })
+  c.addEventListener("input",()=>{
+    const h = c.value.length;
+    return num3 = h, e()
+  })
+  
+  function e(){
+    console.log(num1,num2,num3);
+    const writetext = document.querySelector("#writetext");
+    if(num1>=1&&num2>=1&&num3>=1){
+      writetext.disabled = false;
+      writetext.style.backgroundColor = "#e37676";
+    }else if(num1==0|num2==0|num3==0){
+      writetext.disabled = true;
+      writetext.style.backgroundColor = "#808080;";
+    }
+  }
+};
+
+checkInput(nickname,password,review);
+>>>>>>> origin/main
