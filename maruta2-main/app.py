@@ -369,6 +369,7 @@ def post_recommand(table, title, id):
     cursor.execute('USE post')
     get_json = request.get_json()
     classnumber = get_json['classnumber']
+
     cursor.execute(f"SELECT classnumber from {table}_likeit where classnumber = {classnumber} AND id={id};")
     result = cursor.fetchone()
     if result == None:
