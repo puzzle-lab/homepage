@@ -182,13 +182,13 @@ def list_table_page(table, page):
     cursor.execute(f'SELECT COUNT(*) as cnt FROM `{table}`')
     total = int(cursor.fetchone()['cnt'])
     total_page = (total // 10) + 1
-    offset = (page - 1) * 10
+    offset = (page - 1) * 20
     cursor.execute(f'''
     SELECT {table}.id, {table}.title, {table}.article, {table}.nickname, {table}.date, {table}.recommand, COUNT({table}_comment.comment_id) as cnt
     FROM {table}
     LEFT JOIN {table}_comment ON {table}.id = {table}_comment.id
     GROUP BY {table}.id
-    ORDER BY {table}.id DESC
+    ORDER BY {table}.date DESC
     LIMIT 20 OFFSET {offset}
     ''')
     results = cursor.fetchall()
@@ -198,7 +198,8 @@ def list_table_page(table, page):
 @app.route('/lists/best/<int:page>')
 def best(page):
     cursor.execute("USE post")
-    cursor.execute("""
+    offset = (page - 1) * 20
+    cursor.execute(f"""
                 SELECT id, title, `table`, date, nickname, recommand
                 FROM
     (
@@ -219,7 +220,7 @@ def best(page):
     )
     AS combined_table
     ORDER BY cast(recommand as signed) DESC
-    LIMIT 20;
+    LIMIT 20 offset {offset}; 
     """
     )
     results = cursor.fetchall()
@@ -239,6 +240,7 @@ def best(page):
             """)
     
     total = cursor.fetchone()
+    
     int_total = int(total['cnt'])
     total_page = (int_total // 10 ) + 1
     table = []
@@ -387,13 +389,13 @@ def post_update(table, title, id):
             return 'File type allowed jpg, jpeg, png, gif', 400
         else:
             file_path = os.path.join(app.config['upload_folder'], file_name)
-            cursor.execute(f"UPDATE `{table}` set image=%s WHERE id=%s", (file_path, id))
+            cursor.execute(f"UPDATE `{table}` set title=%s, article=%s, image=%s WHERE id=%s", (new_title, new_article, file_path, id))
             new_file.save(file_path)    
             db.commit()
             return redirect(url_for('list_table_page', table = table, page = 1))
     
     else:
-        file_path = None
+        cursor.execute(f"UPDATE `{table}` set title=%s, article=%s where id=%s", (new_title, new_article, id))
         db.commit()
         return redirect(url_for('list_table_page', table = table, page = 1))
 

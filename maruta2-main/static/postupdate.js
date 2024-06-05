@@ -84,3 +84,46 @@ logOutBtn.addEventListener("click", (event)=>{
   deleteLocal("classname","username","token");
   window.location.href="/";
 })
+
+const title = document.querySelector("#title");
+const textArea = document.querySelector("#textArea");
+let num1=1;
+let num2=1;
+
+function checkInput(a,b){
+  a.addEventListener("input",()=>{
+    const q = a.value.length;
+    return num1 = q, e()
+  })
+  b.addEventListener("input",()=>{
+    const w = b.value.length;
+    return num2 = w, e()
+  })
+  
+  function e(){
+    console.log(num1,num2);
+    const creareTextBtn = document.querySelector("#createTextBtn");
+    if(num1>=1&&num2>=1){
+      creareTextBtn.disabled = false;
+      creareTextBtn.style.backgroundColor = "#e37676";
+    }else if(num1==0|num2==0){
+      creareTextBtn.disabled = true;
+      creareTextBtn.style.backgroundColor = "#808080;";
+    }
+  }
+};
+
+checkInput(title,textArea);
+
+const no = document.querySelector("#no");
+const url = window.location.href;
+
+no.addEventListener("click",()=>{
+  const re = window.location.href;
+  const a = re.replace("/update_page?","");
+  console.log(re);
+  console.log(a);
+
+  window.location.href=`${a}`;
+
+})
