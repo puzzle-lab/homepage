@@ -182,7 +182,7 @@ def list_table_page(table, page):
     cursor.execute(f'SELECT COUNT(*) as cnt FROM `{table}`')
     total = int(cursor.fetchone()['cnt'])
     total_page = (total // 10) + 1
-    offset = (page - 1) * 10
+    offset = (page - 1) * 20
     cursor.execute(f'''
     SELECT {table}.id, {table}.title, {table}.article, {table}.nickname, {table}.date, {table}.recommand, COUNT({table}_comment.comment_id) as cnt
     FROM {table}
