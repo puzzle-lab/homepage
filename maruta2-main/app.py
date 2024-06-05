@@ -18,8 +18,8 @@ db = pymysql.connect(
     database="information", 
     charset="utf8")
 cursor = db.cursor(pymysql.cursors.DictCursor)
-upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
-#upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
+# upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
+upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
 app.config['upload_folder'] = upload_folder
 allowed = {'png', 'jpg', 'jpeg', 'gif'}
 app.jinja_env.globals['url_for'] = url_for
@@ -188,45 +188,72 @@ def list_table_page(table, page):
     FROM {table}
     LEFT JOIN {table}_comment ON {table}.id = {table}_comment.id
     GROUP BY {table}.id
-    ORDER BY {table}.id DESC
+    ORDER BY {table}.date DESC
     LIMIT 20 OFFSET {offset}
     ''')
     results = cursor.fetchall()
     return render_template('post_list.html', results = results, page = page, table = table, total_page = total_page )
 
+
 @app.route('/lists/best/<int:page>')
 def best(page):
+    cursor.execute("USE post")
+    offset = (page - 1) * 20
     cursor.execute(f"""
-                SELECT id, title, `table`, COUNT(*) as cnt
+                SELECT id, title, `table`, date, nickname, recommand
                 FROM
     (
-        SELECT id, title, `table`, recommand, date, nickname, recommand
+        SELECT id, title, `table`, recommand, date, nickname 
         FROM game where recommand >= 5
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM japan
-        UNION 
-        SELECT id, title, `table`, recommand >= 5
-        FROM music
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM computer
-        UNION
-        SELECT id, title, `table`, recommand >= 5
-        FROM talk
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname
+        FROM japan where recommand >= 5
+        UNION  ALL
+        SELECT id, title, `table`, recommand, date, nickname 
+        FROM music where recommand >= 5
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname 
+        FROM computer where recommand >= 5
+        UNION ALL
+        SELECT id, title, `table`, recommand, date, nickname
+        FROM talk where recommand >= 5
     )
     AS combined_table
-    ORDER BY CAST (recommand AS SIGNED) DESC
-    LIMIT 20;
+    ORDER BY cast(recommand as signed) DESC
+    LIMIT 20 offset {offset}; 
     """
     )
     results = cursor.fetchall()
-    total = int(results['cnt'])
-    total_page = (total // 10 ) + 1
-    title = results['title']
-    table = results['table']
-    id = results['id']
-    return render_template('post_list2.html',results = results, page = page, table = table, total_page = total_page )
+    cursor.execute("""
+                SELECT COUNT(*) as cnt 
+                FROM (
+                    SELECT id FROM game WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM japan WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM music WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM computer WHERE recommand >= 5
+                    UNION 
+                    SELECT id FROM talk WHERE recommand >= 5
+                ) AS combined   
+            """)
+    
+    total = cursor.fetchone()
+    
+    int_total = int(total['cnt'])
+    total_page = (int_total // 10 ) + 1
+    table = []
+    id = []
+    print(len(results))
+    print(results)
+    for x in range(len(results)):
+            table.append(results[x]['table'])
+            print(table)
+            id.append(results[x]['id'])
+    return render_template('post_list2.html', results=results, page=page, table=table, total_page=total_page, id=id, length=len(results))
+
+
 
 
 
@@ -252,6 +279,7 @@ def post(table, title, id):
 
 @app.route('/<table>/<title>/<int:id>/like', methods=['post'])
 def like(table, title, id):
+    cursor.execute("USE post")
     classnumber = request.get_json()
     result = classnumber['classnumber']
     cursor.execute(f'SELECT likeit FROM {table}_likeit WHERE classnumber={result} AND id = {id};')
@@ -274,6 +302,7 @@ def post_create_page(table):
 # create post
 @app.route('/create_<table>_post', methods=["POST"])
 def post_create(table):
+    cursor.execute("USE post")
     title = request.form.get("title")
     if title == None:
         return
@@ -340,7 +369,10 @@ def post_update_page(table, title, id):
     cursor.execute('USE post')
     cursor.execute(f'SELECT title, article, image FROM `{table}` where title=%s', (title, ))
     result = cursor.fetchone()
-    return render_template('post_update.html', result = result, table = table, title = title, id=id)
+    img = result['image'] if result else None
+    print(result)
+    print(img)
+    return render_template('post_update.html', result = result, table = table, title = title, id=id, img = img)
 
 #updat post 
 @app.route('/<table>/<title>/<int:id>/update_page/update', methods=['POST'])
@@ -357,13 +389,13 @@ def post_update(table, title, id):
             return 'File type allowed jpg, jpeg, png, gif', 400
         else:
             file_path = os.path.join(app.config['upload_folder'], file_name)
-            cursor.execute(f"UPDATE `{table}` set image=%s WHERE id=%s", (file_path, id))
+            cursor.execute(f"UPDATE `{table}` set title=%s, article=%s, image=%s WHERE id=%s", (new_title, new_article, file_path, id))
             new_file.save(file_path)    
             db.commit()
             return redirect(url_for('list_table_page', table = table, page = 1))
     
     else:
-        file_path = None
+        cursor.execute(f"UPDATE `{table}` set title=%s, article=%s where id=%s", (new_title, new_article, id))
         db.commit()
         return redirect(url_for('list_table_page', table = table, page = 1))
 
@@ -401,14 +433,18 @@ def post_recommand(table, title, id):
     get_json = request.get_json()
     classnumber = get_json['classnumber']
 
+
     cursor.execute(f"SELECT classnumber from {table}_likeit where classnumber = {classnumber} AND id={id};")
     result = cursor.fetchone()
     if result == None:
+
         cursor.execute(f"INSERT INTO {table}_likeit (classnumber, id, likeit) VALUES ({classnumber}, {id}, {1})")
         cursor.execute(f"UPDATE `{table}` set recommand= recommand + 1 where id={id}")
         db.commit()
         return jsonify(result = "true", state = 200)
     elif result:
+
+
         cursor.execute(f"DELETE FROM {table}_likeit where classnumber = {classnumber}")
         cursor.execute(f"UPDATE `{table}` set recommand = recommand - 1 where id={id}")
         db.commit()
@@ -418,11 +454,13 @@ def post_recommand(table, title, id):
 
 
 
+
         
 
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000)
+  app.run(host="0.0.0.0", port=8000, debug =True)
+
     
     

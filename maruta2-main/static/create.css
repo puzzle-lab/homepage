@@ -76,7 +76,7 @@ nav > a {
   padding: 10px;
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   transition: all 0.9s ease-in-out;
 }
@@ -240,12 +240,12 @@ nav > a:hover {
 }
 
 .createTextBtn input:first-child{
-  background-color: #e37676;
+  background-color: rgb(161,161,161);
+  transition: all 0.7s ease-in-out;
 }
 
 .createTextBtn input:last-child{
-  background-color: rgb(161, 161, 161)
-  ;
+  background-color: rgb(161, 161, 161);
 }
 
 .createTextBtn input:hover{

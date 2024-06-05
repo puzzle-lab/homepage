@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 * {
     padding: 0;
     margin: 0;
     list-style: none;
   }
-  
+  body{
+    font-family: "Noto Sans KR, sans-serif";
+  }
   
   .top {
     display: flex;
@@ -170,18 +173,26 @@
   
   .textArea{
     margin: 10px 0;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
   }
   
-  .textArea textarea{
+  .textArea{
+    width: 100%;
+    height: 400px;
+    padding: 20px 0;
+    font-size: 17px;
+    outline: none;
+    border-radius: 10px;
+  }
+    .textArea textarea{
     border: none;
     background-color: #ededed;
     font-weight: bold;
     font-family: sans-serif;
     width: 100%;
     height: 400px;
-    padding: 20px 30px;
+    padding: 15px 20px;
     font-size: 17px;
     outline: none;
     border-radius: 10px;
@@ -201,6 +212,7 @@
   .createTextBtn{
     display: flex;
     justify-content: right;
+    margin: 50px 0;
   }
   
   .createTextBtn input{
@@ -225,4 +237,13 @@
   
   .createTextBtn input:hover{
     box-shadow: 0 1px 5px rgb(110, 110, 110);
+  }
+
+  label{
+    padding: 5px 10px;
+    border: none;
+    background-color: #e37676;
+    border-radius: 22px;
+    color:#fff;
+    font-size: 17px;
   }
