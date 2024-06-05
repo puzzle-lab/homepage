@@ -77,10 +77,12 @@
                   <input type="file" name="image" id="file" value="사진 올리기"  multiple>
                 </div>
                 <div class="textArea">
-                  <textarea name="article" rows="5" cols="30" minlength="1">
-                    <img src="{{ result['image'] }}" alt="">
+                  <div style="width: 250px;">
+                    <img src="{{ image }}"  width="100%">
+                  </div>
+                  <h3 name="article">
                     {{ result['article']}}
-                  </textarea>
+                  </h3>
                 </div>
                 <hr>
                 <div class="createTextBtn">

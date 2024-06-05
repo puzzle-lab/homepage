@@ -170,18 +170,18 @@
   
   .textArea{
     margin: 10px 0;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
   }
   
-  .textArea textarea{
+  .textArea{
     border: none;
     background-color: #ededed;
     font-weight: bold;
     font-family: sans-serif;
     width: 100%;
     height: 400px;
-    padding: 20px 30px;
+    padding: 20px 0;
     font-size: 17px;
     outline: none;
     border-radius: 10px;

@@ -18,8 +18,8 @@ db = pymysql.connect(
     database="information", 
     charset="utf8")
 cursor = db.cursor(pymysql.cursors.DictCursor)
-upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
-#upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
+# upload_folder = '/home/ubuntu/homepage/maruta2-main/static/image'
+upload_folder = '/home/dev/Desktop/homepage/maruta2-main/static/image'
 app.config['upload_folder'] = upload_folder
 allowed = {'png', 'jpg', 'jpeg', 'gif'}
 app.jinja_env.globals['url_for'] = url_for
@@ -277,6 +277,7 @@ def post(table, title, id):
 
 @app.route('/<table>/<title>/<int:id>/like', methods=['post'])
 def like(table, title, id):
+    cursor.execute("USE post")
     classnumber = request.get_json()
     result = classnumber['classnumber']
     cursor.execute(f'SELECT likeit FROM {table}_likeit WHERE classnumber={result} AND id = {id};')
@@ -299,6 +300,7 @@ def post_create_page(table):
 # create post
 @app.route('/create_<table>_post', methods=["POST"])
 def post_create(table):
+    cursor.execute("USE post")
     title = request.form.get("title")
     if title == None:
         return
@@ -365,7 +367,10 @@ def post_update_page(table, title, id):
     cursor.execute('USE post')
     cursor.execute(f'SELECT title, article, image FROM `{table}` where title=%s', (title, ))
     result = cursor.fetchone()
-    return render_template('post_update.html', result = result, table = table, title = title, id=id)
+    img = result['image'] if result else None
+    print(result)
+    print(img)
+    return render_template('post_update.html', result = result, table = table, title = title, id=id, img = img)
 
 #updat post 
 @app.route('/<table>/<title>/<int:id>/update_page/update', methods=['POST'])
@@ -453,7 +458,7 @@ def post_recommand(table, title, id):
 
 
 if __name__ == '__main__':
-  app.run(host="0.0.0.0", port=8000)
+  app.run(host="0.0.0.0", port=8000, debug =True)
 
     
     

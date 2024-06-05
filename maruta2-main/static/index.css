@@ -21,7 +21,7 @@ body{
 }
 
 .container .text-area {
-    width: 500px;
+    min-width: 500px;
     font-size: 23px;
 }
 
