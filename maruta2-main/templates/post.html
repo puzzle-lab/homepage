@@ -88,7 +88,7 @@
           <p style="font-weight: bold;">{{ date_parts[0] }} {{date_parts[1]}} {{ date_parts[2] }}&nbsp; {{ time_parts[0] }}:{{ time_parts[1] }}:{{ time_parts[2]}}</p>
         </div>
         <div style="display: flex;justify-content: right;">
-          <p style="font-size: 17px;color:#5c5c5c;font-weight: bold;">추천 : {{ result['recommand'] }}</p>
+          <p style="font-size: 17px;color:#5c5c5c;font-weight: bold;">좋아요 : <span id="re"></span></p>
         </div>
       </div>
       <div class="contentarea" style="min-height: 400px;">
@@ -125,7 +125,12 @@
       <div class="recommand">
         <!--  추천 버튼 / 누르면 추천 +1-->
         <form action="/{{ table }}/{{ title }}/{{id}}/recommand" method="post">
-          <input type="submit" value="추천" class="recommandbtn"/>
+          <button type="submit" class="recommandbtn">
+              <img src="../static/ㅈㅈㅈ.png" alt="">
+          </button>
+          <div style="text-align: center;margin-bottom: 30px;">
+            <p style="font-weight: bold; font-size: 14px;color:#474747">좋아요</p>
+          </div>
         </form>
       </div>
       <!--자바 스크립트로 글자 넣기 (h2 본문 텍스트 자바스크립트로 댓글 숫자 받고 innerText)-->

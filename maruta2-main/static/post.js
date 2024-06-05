@@ -1,6 +1,7 @@
 const recommand = document.querySelector(".recommand form");
 const currentUrl = window.location.href;
-
+let recommandNum = 0;
+const re = document.querySelector("#re");
 
 document.addEventListener("DOMContentLoaded", function() {
   const classNumber = localStorage.getItem("classname");
@@ -19,17 +20,18 @@ document.addEventListener("DOMContentLoaded", function() {
     return res.json();
   })
   .then((data)=> {
-    if(data.like == "true"){
-      const a = document.querySelector(".recommandbtn");
-      a.style.backgroundColor="blue";
+    const a = document.querySelector(".recommandbtn");
+    if(data.like == "true"){ 
+      a.style.backgroundColor="#ff3b3b";
     }else if(data.like == "false"){
-      const a = document.querySelector(".recommandbtn");
-      a.style.backgroundColor="#a0a0a0";
-      a.style.color="#dadada";
+      a.style.backgroundColor="#ededed";
     }else{
-      const a = document.querySelector(".recommandbtn");
       a.style.backgroundColor="white";
     }
+    const c = data.recommand;
+    const b = parseInt(c);
+    recommandNum += b;
+    re.innerText = recommandNum; 
   });
 });
 
@@ -144,7 +146,6 @@ createArea.addEventListener("submit", function (event) {
     })
     .then((data) => {
       if (data.result == "true") {
-        console.log("aa");
         const a = document.querySelector(".createrArea");
         a.style.display = "flex";
       } else {
@@ -169,18 +170,20 @@ recommand.addEventListener("submit", function(event){
     body: JSON.stringify(data),
   })
   .then((res)=>{
-    console.log(res);
     return res.json();
   })
   .then((data)=> {
+    const h =document.querySelector(".recommandbtn");
     if(data.result == "true"){
-      const a = document.querySelector(".recommandbtn");
-      a.style.backgroundColor="blue";
-      location.replace(currentUrl);
+      const a = recommandNum+1;
+      re.innerText = a;
+      h.style.backgroundColor = "#ff3b3b";
+      return recommandNum = a;
     }else if(data.result == "false"){
-      const a = document.querySelector(".recommandbtn");
-      a.style.backgroundColor="black";
-      location.replace(currentUrl);
+      const b =recommandNum-1;
+      re.innerText = b;
+      h.style.backgroundColor = "#ededed";
+      return recommandNum = b;
     }
   });
 });

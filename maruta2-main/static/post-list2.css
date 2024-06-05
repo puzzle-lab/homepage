@@ -47,7 +47,7 @@ body{
 }
 
 .lists a {
-  margin: 15px 3px;
+  margin: 40px 3px;
   text-decoration: none;
   text-align: center;
   font-size: 17px;
@@ -78,8 +78,9 @@ body{
 }
 
 .last {
+  
   position: relative;
-  bottom: auto;
+  bottom: 0;
   display: flex;
   justify-content: center;
   padding: 80px 0 40px 0;

@@ -79,9 +79,7 @@
                   <input type="file" name="image" id="file" value="사진 올리기"  multiple>
                 </div>
                 <div class="textArea">
-                  <div style="width: 250px;">
-                    <img src="{{ image }}"  width="100%">
-                  </div>
+                  <img src="{{ result['image'] }}"  width="100%">
                   <textarea name="article" id="textArea">{{ result['article']}}</textarea>
                 </div>
                 <hr>

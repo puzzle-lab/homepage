@@ -284,10 +284,14 @@ def like(table, title, id):
     result = classnumber['classnumber']
     cursor.execute(f'SELECT likeit FROM {table}_likeit WHERE classnumber={result} AND id = {id};')
     like_result = cursor.fetchone()
+    cursor.execute(f"SELECT recommand from {table} where id={id};")
+    recommand_result = cursor.fetchone() 
+    recommand = recommand_result['recommand']
+    print(recommand)
     if like_result:
-        return jsonify(like = "true") 
+        return jsonify(like = "true", recommand = recommand) 
     else :
-        return jsonify(like = "false")
+        return jsonify(like = "false", recommand = recommand)
 
 
 
@@ -434,21 +438,20 @@ def post_recommand(table, title, id):
     classnumber = get_json['classnumber']
 
 
-    cursor.execute(f"SELECT classnumber from {table}_likeit where classnumber = {classnumber} AND id={id};")
+    cursor.execute(f"SELECT classnumber from {table}_likeit where classnumber={classnumber} and id={id};")
     result = cursor.fetchone()
+    cursor.execute(f"SELECT recommand from {table} where id={id};")
+    recommand = cursor.fetchone()
     if result == None:
-
         cursor.execute(f"INSERT INTO {table}_likeit (classnumber, id, likeit) VALUES ({classnumber}, {id}, {1})")
         cursor.execute(f"UPDATE `{table}` set recommand= recommand + 1 where id={id}")
         db.commit()
-        return jsonify(result = "true", state = 200)
+        return jsonify(result = "true", recommand=recommand)
     elif result:
-
-
         cursor.execute(f"DELETE FROM {table}_likeit where classnumber = {classnumber}")
         cursor.execute(f"UPDATE `{table}` set recommand = recommand - 1 where id={id}")
         db.commit()
-        return jsonify(result = "false", state = 404)
+        return jsonify(result = "false", recommand=recommand)
     
 
 
