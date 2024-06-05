@@ -367,12 +367,10 @@ def delete_comment(table, title, id, comment_id):
 @app.route('/<table>/<title>/<int:id>/update_page')
 def post_update_page(table, title, id):
     cursor.execute('USE post')
-    cursor.execute(f'SELECT title, article, image FROM `{table}` where title=%s', (title, ))
+    cursor.execute(f'SELECT title, image, article FROM `{table}` where id=%s', (id, ))
     result = cursor.fetchone()
-    img = result['image'] if result else None
     print(result)
-    print(img)
-    return render_template('post_update.html', result = result, table = table, title = title, id=id, img = img)
+    return render_template('post_update.html', result = result, table = table, title = title, id=id)
 
 #updat post 
 @app.route('/<table>/<title>/<int:id>/update_page/update', methods=['POST'])
