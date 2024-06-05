@@ -440,7 +440,7 @@ def post_recommand(table, title, id):
     result = cursor.fetchone()
     cursor.execute(f"SELECT recommand from {table} where id={id};")
     recommand = cursor.fetchone()
-    if result == None or  not result:
+    if result == None :
         cursor.execute(f"INSERT INTO {table}_likeit (classnumber, id, likeit) VALUES ({classnumber}, {id}, {1})")
         cursor.execute(f"UPDATE `{table}` set recommand= recommand + 1 where id={id}")
         db.commit()
