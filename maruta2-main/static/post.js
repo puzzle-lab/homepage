@@ -1,6 +1,6 @@
 const recommand = document.querySelector(".recommand form");
 const currentUrl = window.location.href;
-let recommandNum = 0;
+let recommandNum = undefined;
 const re = document.querySelector("#re");
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
       a.style.backgroundColor="#ededed";
       const c = data.recommand;
       const b =parseInt(c);
-      console,log(c)
+      console.log(c)
       recommandNum = b;
       re.innerText =recommandNum;
       return recommandNum =b;
