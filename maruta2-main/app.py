@@ -3,7 +3,7 @@ from flask_mysqldb import MySQL
 import pymysql, hashlib, os
 import pymysql.cursors
 
-from route.login import login_blueprint
+
 
 app = Flask(__name__)
 
