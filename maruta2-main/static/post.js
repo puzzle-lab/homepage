@@ -23,15 +23,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const a = document.querySelector(".recommandbtn");
     if(data.like == "true"){ 
       a.style.backgroundColor="#ff3b3b";
+      const c = data.recommand;
+      const b = parseInt(c);
+      recommandNum = b;
+      re.innerText =recommandNum;
+      return recommandNum = b;  
     }else if(data.like == "false"){
       a.style.backgroundColor="#ededed";
-    }else{
-      a.style.backgroundColor="white";
-    }
-    const c = data.recommand;
-    const b = parseInt(c);
-    recommandNum += b;
-    re.innerText = recommandNum; 
+      const c = data.recommand;
+      const b =parseInt(c);
+      console,log(c)
+      recommandNum = b;
+      re.innerText =recommandNum;
+      return recommandNum =b;
+    } 
   });
 });
 
